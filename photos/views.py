@@ -41,7 +41,7 @@ def search_results(request):
 def article(request,article_id):
     try:
         article = Article.objects.get(id = article_id)
-    except :
+    except DoesNotExist:
         raise Http404()
     return render(request,"my-photos/article.html", {"article":article})
 
