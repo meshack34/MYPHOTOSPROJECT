@@ -24,13 +24,13 @@ class tags(models.Model):
         return self.name
 
 class Article(models.Model):
-    article_image = models.ImageField(upload_to = 'articles/')
+    
     title = models.CharField(max_length =60)
     post = models.TextField()
-    #editor = models.ForeignKey(Editor)
     editor = models.ForeignKey(Editor, on_delete=models.CASCADE)
     tags = models.ManyToManyField(tags)
     pub_date = models.DateTimeField(auto_now_add=True)
+    article_image = models.ImageField(upload_to = 'articles/')
 
     def __str__(self):
         return self.title
