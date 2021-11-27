@@ -24,6 +24,7 @@ class tags(models.Model):
         return self.name
 
 class Article(models.Model):
+    article_image = models.ImageField(upload_to = 'articles/')
     title = models.CharField(max_length =60)
     post = models.TextField()
     #editor = models.ForeignKey(Editor)
@@ -43,7 +44,7 @@ class Article(models.Model):
     def days_news(cls,date):
         news = cls.objects.filter(pub_date__date = date)
         return news
-        
+
        #..search
     @classmethod
     def search_by_title(cls,search_term):
