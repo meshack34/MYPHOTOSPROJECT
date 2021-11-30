@@ -6,9 +6,10 @@
 <div class="container">
 
     <!-- Looping through news   -->
-    {% for news_item in news %}
-  
-   <div class="row">
+
+{% for news_item in news %}
+
+  <div class="row">
     <!-- displaying News articles -->
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
       <h2 class="text-center"> {{ news_item.title }} </h2>

@@ -1,4 +1,5 @@
 import os
+import django_heroku
 """
 Django settings for myphotosproject project.
 
@@ -54,7 +55,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'myphotosproject.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -72,7 +72,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myphotosproject.wsgi.application'
 
 
 # Database
@@ -137,6 +136,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # configuring the location for media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
