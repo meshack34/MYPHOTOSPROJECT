@@ -1,3 +1,11 @@
+{%extends 'my-photos/base.html'%}
+
+{% block content %}
+{{block.super}}
+
+<div class="container">
+
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -6,11 +14,51 @@
         <title>Photoapp</title>
     </head>
     <body>
-        <h2>Cloudinary Fish</h2>
+      <div class="allphotos">
+        <div class="meshack">  <h2>fooddd</h2>
         <!-- loop through all the images -->
         {% for pic in photo %}
-        <h2>{{pic.title}}</h2>
-            <img src="{{pic.image.url}}" alt="fish">
-        {% endfor %}
+        
+
+        <div class = "col-md-6" data-toggle ="modal" data-target="#showPicModal{{pic.id}}">
+          <img src="{{pic.image.url}}" alt="photo" class="img-responsive">
+           <p>{{pic.title}}</p>
+        </div>
+     
+        <div class="modal fade" id="showPicModal{{pic.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{pic.name}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img src="{{pic.image.url}}" class = "img-responsive"alt="{{pic.name}}">
+            <p><em>Details: </em>{{pic.details}}</p>
+            <div class="col-md-4">
+              <p><em>Category:</em> {{pic.category}}</p>
+              <p><em>Image Location:</em>{{pic.location}}</p>
+              <p><em>Posted On:</em>{{pic.pub_date}}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <p><input class="form-control" type="text" value="{{pic.image.url}}" id="{{pic.id}}.url"><em>share link</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        {% endfor %}</div>
+      
+      </div>
+      
     </body>
-</html>
+</html> 
+  
+  </div>
+  
+
+{% endblock %}
+

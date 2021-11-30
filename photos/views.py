@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404
 import datetime as dt
 from .models import Article
-from .models import photos 
+from .models import photos
 
 # Create views
 def news_today(request):
@@ -37,16 +37,17 @@ def past_days_news(request,past_date):
 
 def search_results(request):
 
-    if 'article' in request.GET and request.GET["article"]:
-        search_term = request.GET.get("article")
-        searched_articles = Article.search_by_title(search_term)
+    if 'photo' in request.GET and request.GET["photo"]:
+        search_term = request.GET.get("photo")
+        searched_photos = photos.search_by_category(search_term)
         message = f"{search_term}"
 
-        return render(request, 'my-photos/search.html',{"message":message,"articles": searched_articles})
+        return render(request, 'my-photos/search.html',{"message":message,"photos": searched_photos})
 
     else:
         message = "You haven't searched for any term"
         return render(request, 'my-photos/search.html',{"message":message})
+
 def article(request,article_id):
     try:
         article = Article.objects.get(id = article_id)

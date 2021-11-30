@@ -1,6 +1,16 @@
 body{
-  background-color: red;
+  background-color:hotpink;
 }
 h1 {
   color: green;
+}
+
+.allphotos{
+  display: flex;
+  background-color: green;
+  justify-content: center;
+}
+img{
+  height: 80px;
+  width: 80px;
 }

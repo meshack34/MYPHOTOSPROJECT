@@ -22,18 +22,35 @@ class tags(models.Model):
 
     def __str__(self):
         return self.name
-class Photo(models.Model):
-    Caption = models.CharField(max_length =60)
-    article_image = models.ImageField(upload_to = 'articles/')
-    def __str__(self):
-        return self.Caption
+
 from cloudinary.models import CloudinaryField
 
-class photos(models.Model):
+
+class Category(models.Model):
     # title field
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+class Location(models.Model):
+    # title field
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+class photos(models.Model):
+    
     title = models.CharField(max_length=100)
-    #image field
+    details = models.TextField(null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    location = models.ForeignKey(Location, on_delete=models.CASCADE, null=True)
     image = CloudinaryField('image')
+    pub_date = models.DateTimeField(auto_now_add=True,null=True)
+    @classmethod
+    def search_by_category(cls,search_term):
+        news = cls.objects.filter(category__name__icontains=search_term)
+        return news
+
+
     
 class Article(models.Model):
     
@@ -60,7 +77,3 @@ class Article(models.Model):
        #..search
    
     #...................
-    @classmethod
-    def search_by_title(cls,search_term):
-        news = cls.objects.filter(title__icontains=search_term)
-        return news
