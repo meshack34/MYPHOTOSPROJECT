@@ -1,6 +1,9 @@
 from django.contrib import admin
 
 from .models import Editor,Article,tags,Photo
+from .models import photos
+
+admin.site.register(photos)
 
 # Register your models here.
 class ArticleAdmin(admin.ModelAdmin):

@@ -3,12 +3,21 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404
 import datetime as dt
 from .models import Article
+from .models import photos 
 
 # Create views
 def news_today(request):
     date = dt.date.today()
     news = Article.todays_news()
     return render(request, 'my-photos/daily-photos.html',{'date': date,"news":news})
+def index(request):
+    # imports photos and save it in database
+    photo = photos.objects.all()
+    # adding context 
+    ctx = {'photo':photo}
+    return render(request, 'my-photos/index.html', ctx)
+
+
 
 def past_days_news(request,past_date):
     

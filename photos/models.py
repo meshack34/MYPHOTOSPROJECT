@@ -24,10 +24,17 @@ class tags(models.Model):
         return self.name
 class Photo(models.Model):
     Caption = models.CharField(max_length =60)
-    photo_imagen = models.ImageField(upload_to = 'articles/')
+    article_image = models.ImageField(upload_to = 'articles/')
     def __str__(self):
         return self.Caption
+from cloudinary.models import CloudinaryField
 
+class photos(models.Model):
+    # title field
+    title = models.CharField(max_length=100)
+    #image field
+    image = CloudinaryField('image')
+    
 class Article(models.Model):
     
     title = models.CharField(max_length =60)
@@ -35,7 +42,7 @@ class Article(models.Model):
     editor = models.ForeignKey(Editor, on_delete=models.CASCADE)
     tags = models.ManyToManyField(tags)
     pub_date = models.DateTimeField(auto_now_add=True)
-    article_image = models.ImageField(upload_to = 'articles/')
+    photo_imagen = models.ImageField(upload_to = 'articles/')
 
     def __str__(self):
         return self.title
