@@ -15,12 +15,12 @@
     </head>
     <body>
       <div class="allphotos">
-        <div class="meshack">  <h2>fooddd</h2>
+        <div class="meshack"> 
         <!-- loop through all the images -->
         {% for pic in photo %}
         
 
-        <div class = "col-md-6" data-toggle ="modal" data-target="#showPicModal{{pic.id}}">
+        <div class = "col-md-9" data-toggle ="modal" data-target="#showPicModal{{pic.id}}">
           <img src="{{pic.image.url}}" alt="photo" class="img-responsive">
            <p>{{pic.title}}</p>
         </div>
@@ -28,12 +28,14 @@
         <div class="modal fade" id="showPicModal{{pic.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+
           <div class="modal-header">
             <h5 class="modal-title">{{pic.name}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+
           <div class="modal-body">
             <img src="{{pic.image.url}}" class = "img-responsive"alt="{{pic.name}}">
             <p><em>Details: </em>{{pic.details}}</p>
@@ -43,6 +45,7 @@
               <p><em>Posted On:</em>{{pic.pub_date}}</p>
             </div>
           </div>
+          
           <div class="modal-footer">
             <p><input class="form-control" type="text" value="{{pic.image.url}}" id="{{pic.id}}.url"></p>
           </div>
