@@ -19,10 +19,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 
+
 cloudinary.config( 
-  cloud_name = "meshack-5767", 
-  api_key = "563243978564486", 
-  api_secret = "zv9xql2dyBLDDgKy4gqTXRfdBYE" 
+  cloud_name = config('CLOUD_NAME'), 
+  api_key = config('API_KEY'), 
+  api_secret = config('API_SECRET') 
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
