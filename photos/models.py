@@ -22,6 +22,11 @@ class tags(models.Model):
 
     def __str__(self):
         return self.name
+class Photo(models.Model):
+    Caption = models.CharField(max_length =60)
+    photo_imagen = models.ImageField(upload_to = 'articles/')
+    def __str__(self):
+        return self.Caption
 
 class Article(models.Model):
     
