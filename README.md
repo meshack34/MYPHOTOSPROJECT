@@ -1,4 +1,4 @@
-# MYPHOTOSPROJECT
+# MY PHOTOS 
 ## Author
 by [MESHACK KIMUTAI](https://github.com/kimutaimeshack?tab=repositories)
 *********
